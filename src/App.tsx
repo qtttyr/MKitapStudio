@@ -138,7 +138,10 @@ function AppInner() {
           projectId={detailsId}
           onClose={() => setDetailsId(null)}
           onExport={(id) => setExportId(id)}
-          onWrite={openEditor}
+          onWrite={(id) => {
+            setDetailsId(null)
+            openEditor(id)
+          }}
         />
       )}
 
