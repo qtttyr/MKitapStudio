@@ -1,0 +1,71 @@
+MK.STUDIO / MKITAP STUDIO — PROPRIETARY SOFTWARE LICENSE
+
+Copyright (c) 2026 MKitap. All Rights Reserved.
+
+Optionally replace "MKitap" above with your full legal name before publishing.
+
+
+ENGLISH (AUTHORITATIVE TEXT)
+============================================================================
+
+1. OWNERSHIP
+   This software, including its source code, design, graphics, animations,
+   audio synthesis algorithms, text and all accompanying materials
+   (the "Software"), is the exclusive property of the copyright holder.
+   It is NOT open-source software.
+
+2. NO LICENSE GRANTED
+   No rights are granted to copy, reproduce, modify, merge, publish,
+   distribute, sublicense, sell, create derivative works from, or use any
+   part of this Software — in source or compiled form — except with a
+   separate written agreement signed by the copyright holder.
+
+3. VIEWING RESTRICTION
+   Access to the source code, where provided, is for review and evaluation
+   purposes only. Such access does not constitute a license to use,
+   modify or redistribute the code or any portion of it.
+
+4. TRADEMARKS
+   "MKitap", "mk.studio" and associated logos are trademarks of the
+   copyright holder. Nothing herein grants any right to use these marks.
+
+5. ENFORCEMENT
+   Unauthorized copying, distribution or commercial use of the Software
+   or its derivatives constitutes copyright infringement and will be
+   prosecuted to the fullest extent permitted by law.
+
+6. WARRANTY AND LIABILITY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+   IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM,
+   DAMAGES OR OTHER LIABILITY ARISING FROM THE SOFTWARE.
+
+
+RUSSIAN (INFORMAL SUMMARY — NON-BINDING TRANSLATION)
+============================================================================
+
+© 2026 MKitap. Все права защищены.
+
+1. ВЕСЬ код, дизайн, графика и алгоритмы этого приложения являются
+   исключительной собственностью правообладателя. Это НЕ open-source.
+2. КОПИРОВАТЬ, изменять, распространять, публиковать, продавать или
+   создавать производные работы на основе этого кода ЗАПРЕЩЕНО без
+   отдельного письменного соглашения с правообладателем.
+3. Доступ к исходному коду (если предоставлен) даётся только для
+   ознакомления и не является разрешением на использование кода.
+4. «MKitap» и «mk.studio» — товарные знаки правообладателя.
+5. Нарушение этих условий является нарушением авторских прав и
+   преследуется по закону в полном объёме.
+6. Приложение предоставляется «как есть», без каких-либо гарантий.
+
+
+PRIVACY & SECURITY STATEMENT
+============================================================================
+
+This application is local-first by design:
+  • All user data (manuscripts, notes, covers, statistics) is stored
+    exclusively on the user's device (IndexedDB / localStorage).
+  • The app contains no analytics, no tracking, no telemetry,
+    no third-party SDKs collecting data.
+  • No accounts, no servers, no cloud — nothing leaves the device.
+
+Contacts: [your-contact@example.com]
