@@ -133,6 +133,9 @@ export const dict = {
     sendReaderCta: 'Send to MKitap Reader',
     deleteProjectCta: 'Delete manuscript',
     deleteProjectConfirm: 'Delete “{title}”? All chapters will be removed forever.',
+    writeNow: 'Write',
+    msDetailsToggle: 'Cover & details',
+    wordsOfTarget: '{cur} of {target}',
 
     // Экспорт
     exKicker: 'PUBLISH',
@@ -335,6 +338,9 @@ export const dict = {
     sendReaderCta: 'Отправить в MKitap Reader',
     deleteProjectCta: 'Удалить рукопись',
     deleteProjectConfirm: 'Удалить «{title}»? Все главы будут удалены навсегда.',
+    writeNow: 'Писать',
+    msDetailsToggle: 'Обложка и детали',
+    wordsOfTarget: '{cur} из {target}',
 
     exKicker: 'ПУБЛИКАЦИЯ',
     exTitle: 'Экспорт вашей книги',

@@ -1,4 +1,4 @@
-﻿import { ArrowRight, BookOpen, MoreHorizontal, PenLine, Plus } from 'lucide-react'
+﻿import { ArrowRight, BookOpen, PenLine, Plus } from 'lucide-react'
 import { projectWords, useStudio } from '../../lib/studioContext'
 import { getStreak, getTodayWords } from '../../lib/writingStats'
 import { useI18n, type MessageKey } from '../../lib/i18n'
@@ -122,16 +122,16 @@ export function HomeSection({ onOpenProject, onNewBook, onGoBooks }: Props) {
 
       <div className="book-grid">
         {projects.slice(0, 8).map((p) => (
-          <ManuscriptCard key={p.id} id={p.id} onOpen={() => onOpenProject(p.id)} onMenu={onGoBooks} />
+          <ManuscriptCard key={p.id} id={p.id} onOpen={() => onOpenProject(p.id)} />
         ))}
       </div>
     </div>
   )
 }
 
-export function ManuscriptCard({ id, onOpen, onMenu }: { id: string; onOpen: () => void; onMenu?: () => void }) {
+export function ManuscriptCard({ id, onOpen }: { id: string; onOpen: () => void }) {
   const { projects } = useStudio()
-  const { lang, t } = useI18n()
+  const { lang } = useI18n()
   const p = projects.find((x) => x.id === id)
   if (!p) return null
   const words = projectWords(p)
@@ -141,32 +141,7 @@ export function ManuscriptCard({ id, onOpen, onMenu }: { id: string; onOpen: () 
     <button className="book-item" onClick={onOpen}>
       <ManuscriptCover project={p} />
       <div className="book-meta">
-        <div className="bm-row">
-          <span className="bm-text">
-            <h3>{p.title}</h3>
-          </span>
-          {onMenu && (
-            <span
-              className="meta-menu"
-              role="button"
-              tabIndex={0}
-              aria-label={t('psDetails')}
-              onClick={(e) => {
-                e.stopPropagation()
-                onMenu()
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault()
-                  e.stopPropagation()
-                  onMenu()
-                }
-              }}
-            >
-              <MoreHorizontal size={16} />
-            </span>
-          )}
-        </div>
+        <h3>{p.title}</h3>
         <div className="bm-progress">
           <span>
             {words.toLocaleString()} · {pct}%

@@ -60,6 +60,11 @@ function AppInner() {
     [bumpStats, setLastOpen],
   )
 
+  /** Клик по книге — сначала карточка с деталями, как в MKitap Reader. */
+  const openDetails = useCallback((id: string) => {
+    setDetailsId(id)
+  }, [])
+
   const closeEditor = useCallback(() => {
     setEditorId(null)
     bumpStats()
@@ -94,14 +99,12 @@ function AppInner() {
         <section className="content-area">
           {section === 'home' && (
             <HomeSection
-              onOpenProject={openEditor}
+              onOpenProject={openDetails}
               onNewBook={() => setNewOpen(true)}
               onGoBooks={() => setSection('books')}
             />
           )}
-          {section === 'books' && (
-            <BooksSection onOpenProject={openEditor} onOpenDetails={setDetailsId} />
-          )}
+          {section === 'books' && <BooksSection onOpenProject={openDetails} />}
           {section === 'profile' && (
             <ProfileSection
               onEraseAll={() => {
@@ -135,6 +138,7 @@ function AppInner() {
           projectId={detailsId}
           onClose={() => setDetailsId(null)}
           onExport={(id) => setExportId(id)}
+          onWrite={openEditor}
         />
       )}
 

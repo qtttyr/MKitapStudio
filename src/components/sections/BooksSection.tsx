@@ -7,10 +7,9 @@ import { ManuscriptCard } from './HomeSection'
 
 type Props = {
   onOpenProject: (id: string) => void
-  onOpenDetails: (id: string) => void
 }
 
-export function BooksSection({ onOpenProject, onOpenDetails }: Props) {
+export function BooksSection({ onOpenProject }: Props) {
   const { projects, ready } = useStudio()
   const { t } = useI18n()
   const [query, setQuery] = useState('')
@@ -65,7 +64,7 @@ export function BooksSection({ onOpenProject, onOpenDetails }: Props) {
       ) : (
         <div className="book-grid">
           {filtered.map((p) => (
-            <ManuscriptCard key={p.id} id={p.id} onOpen={() => onOpenProject(p.id)} onMenu={() => onOpenDetails(p.id)} />
+            <ManuscriptCard key={p.id} id={p.id} onOpen={() => onOpenProject(p.id)} />
           ))}
         </div>
       )}

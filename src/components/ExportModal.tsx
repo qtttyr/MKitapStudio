@@ -1,5 +1,5 @@
 ﻿import { useEffect, useState } from 'react'
-import { Check, Download, Send, ShieldCheck } from 'lucide-react'
+import { Check, Download, Send, ShieldCheck, X } from 'lucide-react'
 import { useStudio, projectWords } from '../lib/studioContext'
 import { downloadEpub, computeTextHash } from '../lib/epub'
 import { sendToReader } from '../lib/readerBridge'
@@ -77,7 +77,7 @@ export function ExportModal({ projectId, onClose }: Props) {
     <div className="modal-overlay" role="dialog" aria-modal="true" onClick={onClose}>
       <div className="modal-card" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose} aria-label={t('close')}>
-          вњ•
+          <X size={19} />
         </button>
 
         <p className="eyebrow">{t('exKicker')}</p>

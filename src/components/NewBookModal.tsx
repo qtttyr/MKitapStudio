@@ -1,8 +1,7 @@
 ﻿import { useState } from 'react'
-import { Feather } from 'lucide-react'
-import { COVER_PRESETS } from '../lib/covers'
+import { Feather, X } from 'lucide-react'
 import { useStudio } from '../lib/studioContext'
-import { useI18n, type MessageKey } from '../lib/i18n'
+import { useI18n } from '../lib/i18n'
 import type { CoverPreset } from '../types'
 
 type Props = {
@@ -10,28 +9,21 @@ type Props = {
   onCreated: (id: string, startWriting: boolean) => void
 }
 
-const GENRES: MessageKey[] = [
-  'genreFiction',
-  'genreScifi',
-  'genreFantasy',
-  'genreNonfiction',
-  'genrePoetry',
-  'genreJournal',
-  'genreMemoir',
-  'genreOther',
-]
-
 const PRESETS: CoverPreset[] = ['film', 'vintage', 'minimal', 'cyber']
-const TARGETS = [30000, 50000, 90000]
 
+function randomPreset(): CoverPreset {
+  return PRESETS[Math.floor(Math.random() * PRESETS.length)]
+}
+
+/**
+ * Одна мысль — одно поле. Название книги — и сразу к тексту.
+ * Жанр и цель можно донастроить позже в карточке рукописи.
+ */
 export function NewBookModal({ onClose, onCreated }: Props) {
   const { createProject, authorName } = useStudio()
   const { t } = useI18n()
 
   const [title, setTitle] = useState('')
-  const [genre, setGenre] = useState<MessageKey>('genreFiction')
-  const [target, setTarget] = useState(50000)
-  const [preset, setPreset] = useState<CoverPreset>('film')
   const [shake, setShake] = useState(false)
 
   const handleCreate = (startWriting: boolean) => {
@@ -43,9 +35,9 @@ export function NewBookModal({ onClose, onCreated }: Props) {
     const p = createProject({
       title,
       author: authorName,
-      genre: t(genre),
-      targetWords: target,
-      preset,
+      genre: t('genreFiction'),
+      targetWords: 50000,
+      preset: randomPreset(),
     })
     onClose()
     onCreated(p.id, startWriting)
@@ -53,9 +45,13 @@ export function NewBookModal({ onClose, onCreated }: Props) {
 
   return (
     <div className="modal-overlay" role="dialog" aria-modal="true" onClick={onClose}>
-      <div className="modal-card" style={shake ? { animation: 'toastIn .1s ease 3 alternate' } : undefined} onClick={(e) => e.stopPropagation()}>
+      <div
+        className="modal-card nb-card"
+        style={shake ? { animation: 'nbShake 0.4s ease' } : undefined}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button className="modal-close" onClick={onClose} aria-label={t('close')}>
-          вњ•
+          <X size={19} />
         </button>
 
         <p className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -64,9 +60,7 @@ export function NewBookModal({ onClose, onCreated }: Props) {
         <h2>{t('nbTitle')}</h2>
 
         <div className="field">
-          <label htmlFor="nb-title">{t('nameLabel')}</label>
           <input
-            id="nb-title"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -74,62 +68,18 @@ export function NewBookModal({ onClose, onCreated }: Props) {
             placeholder={t('namePh')}
             maxLength={120}
             autoFocus
+            style={{
+              width: '100%',
+              background: 'var(--surface)',
+              border: '1px solid var(--border)',
+              borderRadius: 14,
+              padding: '15px 16px',
+              fontSize: 16,
+              fontFamily: 'var(--font-serif)',
+              fontWeight: 600,
+              color: 'var(--foreground)',
+            }}
           />
-        </div>
-
-        <div className="field">
-          <label>{t('genreLabel')}</label>
-          <div className="chips-row">
-            {GENRES.map((g) => (
-              <button key={g} className={`chip ${genre === g ? 'selected' : ''}`} onClick={() => setGenre(g)}>
-                {t(g)}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="field">
-          <label>{t('targetLabel')}</label>
-          <div className="chips-row">
-            {TARGETS.map((n) => (
-              <button key={n} className={`chip ${target === n ? 'selected' : ''}`} onClick={() => setTarget(n)}>
-                {(n / 1000).toFixed(0)}k
-              </button>
-            ))}
-            <input
-              type="number"
-              min={1000}
-              step={1000}
-              value={target}
-              onChange={(e) => setTarget(Math.max(1000, Number(e.target.value) || 1000))}
-              style={{
-                width: 110,
-                background: 'var(--surface)',
-                border: '1px solid var(--border)',
-                borderRadius: 99,
-                padding: '7px 14px',
-                fontSize: 12,
-                color: 'var(--foreground)',
-                outline: 'none',
-              }}
-            />
-          </div>
-          <p className="hint">{t('targetHint')}</p>
-        </div>
-
-        <div className="field">
-          <label>{t('coverStyleLabel')}</label>
-          <div className="preset-swatches">
-            {PRESETS.map((p) => (
-              <button
-                key={p}
-                className={`preset-swatch ${preset === p ? 'selected' : ''}`}
-                style={{ background: COVER_PRESETS[p] }}
-                onClick={() => setPreset(p)}
-                aria-label={t(`preset${p.charAt(0).toUpperCase()}${p.slice(1)}` as MessageKey)}
-              />
-            ))}
-          </div>
         </div>
 
         <div className="modal-actions">
