@@ -87,6 +87,7 @@ export const dict = {
     preview: 'Markdown preview',
     aboutL: 'About',
     versionL: 'Version 0.1.0 — a quiet place for loud ideas.',
+    copyrightL: '© 2026 MKitap. All rights reserved.',
 
     // Новая рукопись
     nbKicker: 'NEW MANUSCRIPT',
@@ -294,6 +295,7 @@ export const dict = {
     preview: 'Markdown-превью',
     aboutL: 'О приложении',
     versionL: 'Версия 0.1.0 — тихое место для громких идей.',
+    copyrightL: '© 2026 MKitap. Все права защищены.',
 
     nbKicker: 'НОВАЯ РУКОПИСЬ',
     nbTitle: 'Начать новую книгу',

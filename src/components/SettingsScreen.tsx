@@ -150,6 +150,8 @@ export function SettingsScreen({ onClose, theme, setTheme }: Props) {
               mk.studio — {t('versionL')}
               <br />
               Made with care for people who write.
+              <br />
+              <span style={{ opacity: 0.75, display: 'inline-block', marginTop: 6 }}>{t('copyrightL')}</span>
             </p>
           </section>
         </div>
